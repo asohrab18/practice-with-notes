@@ -1,0 +1,29 @@
+What is AWS EC2 for beginners?
+EC2 means Elastic Compute Cloud.
+https://www.youtube.com/watch?v=xkXZGvuerRU
+___________________________________________________________________________________________________
+
+AWS S3 simple explanation?
+https://www.youtube.com/watch?v=mRWm8Y2sV0E
+
+AWS S3 (Simple Storage Service)
+
+- Object storage service by AWS
+- Object = Data + Metadata (info about data)
+- Data stored inside Buckets
+
+Usage:
+- Store and retrieve any amount of data over internet
+- Used for images, videos, backups, logs
+
+Key Features:
+- Durability: 99.999999999% (very low data loss)
+- Availability: 99.99%
+- Scalable: storage increases/decreases as needed
+- Cost-effective: pay-as-you-use (no hardware needed)
+- Secure: supports encryption (in-transit + at-rest)
+
+
+“S3 is an object storage service from AWS where data is stored as objects inside buckets. It is highly durable, scalable, and used to store files like images, videos, and backups.”
+
+___________________________________________________________________________________________________

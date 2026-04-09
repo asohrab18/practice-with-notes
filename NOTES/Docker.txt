@@ -2,12 +2,6 @@ What is Docker in simple terms?
 https://www.youtube.com/watch?v=qN1CzLdCq5g
 ___________________________________________________________________________________________________
 
-What is AWS EC2 for beginners?
-EC2 means Elastic Compute Cloud.
-https://www.youtube.com/watch?v=xkXZGvuerRU
-___________________________________________________________________________________________________
-
-
 Docker vs Virtual Machine (VM)?
 https://www.youtube.com/watch?v=5GanJdbHlAA
 
