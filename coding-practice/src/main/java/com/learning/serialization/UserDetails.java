@@ -1,10 +1,10 @@
 package com.learning.serialization;
 
-//import java.io.Serializable;
+import java.io.Serializable;
 
-public class UserDetails {//implements Serializable {
+public class UserDetails implements Serializable {
 
-	//private static final long serialVersionUID = 5354447313676240918L;
+	private static final long serialVersionUID = 5354447313676240918L;
 
 	private String name;
 
