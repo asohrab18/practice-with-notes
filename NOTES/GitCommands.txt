@@ -1,0 +1,107 @@
+1. Basic Setup
+
+Install Git: https://git-scm.com/downloads
+
+Configure user info:
+
+git config --global user.name "Sohrab Alam"
+git config --global user.email "sohrab.alam86@gmail.com"
+
+
+Check version:
+
+git --version
+
+_______________________________________________________________________________________________________________________
+
+2. Core Git Workflow
+
+Clone a repository:
+git clone <repo-url>
+
+For example: 
+git clone https://github.com/asohrab18/practice-with-notes.git
+
+
+Command to know the actual location of repository in my system:
+pwd
+
+Output: /c/Users/ULTRA/loggers-repo
+
+
+Check repository status:
+git status
+
+
+
+Add changes:
+git add <file>   # single file
+git add .        # all changes
+
+
+Commit changes:
+git commit -m "Your commit message"
+
+For example:
+git commit -m "Java9 allows private methods."
+
+Push changes to remote:
+git push origin <branch-name>
+
+For example:
+git push origin main
+
+
+Pull latest changes from remote:
+git pull origin <branch-name>
+
+_______________________________________________________________________________________________________________________
+
+3. Branching (Essential for Java projects)
+
+Create a new branch:
+git checkout -b feature/my-feature
+
+
+Switch branches:
+git checkout main
+
+
+
+
+Merge branch:
+git merge feature/my-feature
+
+_______________________________________________________________________________________________________________________
+
+
+4. Undo mistakes safely
+
+Unstage a file:
+git reset HEAD <file>
+
+
+Discard local changes:
+git checkout -- <file>
+
+
+
+Revert a commit:
+git revert <commit-hash>
+
+_______________________________________________________________________________________________________________________
+
+5. Best practices
+
+Commit often with meaningful messages.
+
+Pull before pushing to avoid conflicts.
+
+Use branches for features or bug fixes.
+
+Learn to read Git logs:
+git log --oneline --graph --all
+
+
+
+_______________________________________________________________________________________________________________________

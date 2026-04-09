@@ -1,0 +1,32 @@
+Q.[1] What is Scalability in System Design?
+https://www.youtube.com/watch?v=TXJP0gzCXFQ
+
+Scalability:
+=========================
+Ability of system to handle more users/load.
+Should not slow down when traffic increases.
+
+
+Two types:
+==========
+Vertical scaling (increase server power)
+Horizontal scaling (add more servers)
+Used to avoid system crash
+Important for large applications
+
+_________________________________________________________________________________________________________
+
+Q.[2]: Monolith vs Microservices simple explanation?
+https://www.youtube.com/watch?v=rv4LlmLmVWk
+
+_________________________________________________________________________________________________________
+
+Q.[3]: What is Load Balancer simple explanation?
+https://www.youtube.com/watch?v=sCR3SAVdyCc
+
+Load Balancer is used to distribute the users requests (Load) among our multiple servers to handle it. It enhances the performance of our application. 
+It distributes the traffic in round robin fashion or randomly on the basis of some algorithm.
+
+_________________________________________________________________________________________________________
+
+

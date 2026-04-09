@@ -1,0 +1,24 @@
+What is Docker in simple terms?
+https://www.youtube.com/watch?v=qN1CzLdCq5g
+___________________________________________________________________________________________________
+
+What is AWS EC2 for beginners?
+EC2 means Elastic Compute Cloud.
+https://www.youtube.com/watch?v=xkXZGvuerRU
+___________________________________________________________________________________________________
+
+
+Docker vs Virtual Machine (VM)?
+https://www.youtube.com/watch?v=5GanJdbHlAA
+
+Operating System (OS) = OS Kernel + Applications Layer
+
+VM = OS Kernel + Applications Layer
+
+Docker = Applications Layer
+
+Compatibility: VM of any OS can run on any OS host but Linux Docker Image may not be compatible with Windows Kernel while Docker toolbox may help to do that.
+
+Size: Docker image size is much smaller than VM.
+Speed: Docker containers start and run much faster than VM.
+___________________________________________________________________________________________________
