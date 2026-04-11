@@ -5,14 +5,57 @@ ________________________________________________________________________________
 Docker vs Virtual Machine (VM)?
 https://www.youtube.com/watch?v=5GanJdbHlAA
 
-Operating System (OS) = OS Kernel + Applications Layer
+“A virtual machine runs a full operating system with its own kernel, making it heavier, while Docker containers share the host OS kernel and only package the application and dependencies, making them lightweight and faster.”
 
-VM = OS Kernel + Applications Layer
+Virtual Machine (VM):
+- Runs full operating system (OS)
+- Includes OS Kernel + Applications + dependencies
+- Uses Hypervisor to manage VMs
+- Heavyweight (large size)
+- Slower startup
 
-Docker = Applications Layer
+Docker (Containers):
+- Runs only application + dependencies
+- Shares host OS kernel
+- Lightweight (small size)
+- Faster startup
 
-Compatibility: VM of any OS can run on any OS host but Linux Docker Image may not be compatible with Windows Kernel while Docker toolbox may help to do that.
+Key Differences:
+- VM = Full OS → heavy
+- Docker = Uses host OS → lightweight
+- VM = More isolation
+- Docker = Faster and efficient
 
-Size: Docker image size is much smaller than VM.
-Speed: Docker containers start and run much faster than VM.
+Example:
+- VM: Runs separate Windows/Linux OS inside machine
+- Docker: Runs multiple apps using same OS kernel
 ___________________________________________________________________________________________________
+
+Docker Image vs Container simple:
+https://www.youtube.com/watch?v=bSe3qawNQEY
+
+“A Docker image is a read-only template that contains the application and its dependencies, while a container is a running instance of that image. One image can be used to create multiple containers.”
+
+Docker Image:
+- Read-only template
+- Contains application code + dependencies + libraries + runtime (e.g., JDK)
+- Used to create containers
+
+Docker Container:
+- Running instance of a Docker Image
+- Executes the application
+- Uses dependencies packaged inside the image
+- Isolated from host system (no need to install dependencies locally)
+
+Key Points:
+- One image → multiple containers
+- Containers are lightweight and fast
+- Different containers can run different environments simultaneously
+
+Example:
+- One container runs app with JDK 8
+- Another container runs app with JDK 21
+- Both run on same system without conflict
+
+___________________________________________________________________________________________________
+

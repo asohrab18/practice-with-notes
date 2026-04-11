@@ -2,11 +2,14 @@ package com.learning.leetcode;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ValidAnagram {
 
-	public static boolean isAnagram(String s, String t) {
+	/** This is my logic by brute force but not optimized. */
+	public static boolean isAnagramUsingList(String s, String t) {
 		if (s == null || t == null) {
 			return false;
 		}
@@ -27,11 +30,14 @@ public class ValidAnagram {
 		}
 		Collections.sort(chList1);
 		Collections.sort(chList2);
-
 		return chList1.equals(chList2);
 	}
 
-	public static boolean isAnagramByChatGptBackup(String s, String t) {
+	/**
+	 * This is ChatGpt's optimized logic applicable for strings having only
+	 * alphabets in small letters.
+	 */
+	public static boolean isAnagramUsingArray(String s, String t) {
 		if (s == null || t == null || s.length() == 0 || t.length() == 0 || s.length() != t.length()) {
 			return false;
 		}
@@ -52,29 +58,43 @@ public class ValidAnagram {
 		return true;
 	}
 
-	public static boolean isAnagramByChatGpt(String s, String t) {
-		int[] demoArray = new int[26];
+	/**
+	 * This is ChatGpt's optimized universal logic applicable for all types of
+	 * strings (case insensitive).
+	 */
+	public static boolean isAnagramUsingMap(String s, String t) {
+		if (s == null || t == null || s.length() != t.length()) {
+			return false;
+		}
+		s = s.toLowerCase();
+		t = t.toLowerCase();
+
+		Map<Character, Integer> characterFrequencyMap = new HashMap<>();
 
 		for (int i = 0; i < s.length(); i++) {
-			System.out.println("s.charAt(i) = " + s.charAt(i));
-			System.out.println("t.charAt(i) = " + t.charAt(i));
-			System.out.println("=======================================================");
-			demoArray[s.charAt(i) - 'a']++;
-			demoArray[t.charAt(i) - 'a']--;
+			char ch = s.charAt(i);
+			characterFrequencyMap.put(ch, characterFrequencyMap.getOrDefault(ch, 0) + 1);
 		}
 
-		for (int n : demoArray) {
-			if (n != 0) {
+		for (int i = 0; i < t.length(); i++) {
+			char ch = t.charAt(i);
+			if (!characterFrequencyMap.containsKey(ch)) {
 				return false;
 			}
+			characterFrequencyMap.put(ch, characterFrequencyMap.get(ch) - 1);
+
+			if (characterFrequencyMap.get(ch) == 0) {
+				characterFrequencyMap.remove(ch);
+			}
+
 		}
 
-		return true;
+		return characterFrequencyMap.isEmpty();
 	}
 
 	public static void main(String[] args) {
-		String s = "rams", t = "mars";
-		boolean anagram = isAnagramByChatGpt(s, t);
+		String s = "aacc", t = "ccac";
+		boolean anagram = isAnagramUsingMap(s, t);
 		System.out.println(anagram);
 	}
 

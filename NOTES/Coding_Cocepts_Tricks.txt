@@ -66,3 +66,17 @@ Whenever you see:
 
 ___________________________________________________________________________________________________
 
+🎯 Key Learning (Very Important)
+
+👉 Whenever problem involves:
+
+“count”
+“frequency”
+“number of occurrences”
+
+👉 NEVER use:
+❌ Set
+
+👉 ALWAYS use:
+✅ Array / HashMap
+___________________________________________________________________________________________________

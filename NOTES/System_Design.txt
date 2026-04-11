@@ -78,3 +78,52 @@ Caching is a technique to store frequently accessed data temporarily so that fut
 
 _________________________________________________________________________________________________________
 
+Q. What is Database Indexing simple explanation?
+https://www.youtube.com/watch?v=xXtig5uLQS4
+
+“Indexing is a technique used to improve query performance by creating a data structure on specific columns, allowing the database to quickly locate rows instead of scanning the entire table.”
+
+- Indexing is a technique to improve the speed of data retrieval
+- It helps avoid full table scan
+
+How it works:
+- Without index → database scans each row (slow)
+- With index → database uses a data structure (like B-Tree) to find data quickly
+
+Key Points:
+- Created on column(s) used in WHERE, JOIN, ORDER BY
+- Improves read/query performance
+- Uses extra storage
+
+Trade-offs:
+- Slows down INSERT, UPDATE, DELETE (because index also needs update)
+
+When to use:
+- Large tables
+- Read-heavy systems
+- Frequently searched columns
+
+When NOT to use:
+- Small tables
+- Write-heavy systems
+
+Example:
+- Searching netWorth = 4000
+- Without index → linear scan
+- With index → fast lookup using index structure
+
+Types of index (just awareness):
+
+Primary Index
+Secondary Index
+Composite Index
+
+_________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
