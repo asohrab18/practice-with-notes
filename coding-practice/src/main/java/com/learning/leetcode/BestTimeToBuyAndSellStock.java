@@ -2,6 +2,7 @@ package com.learning.leetcode;
 
 public class BestTimeToBuyAndSellStock {
 
+	/** This is my logic inspired by ChatGpt's optimized logic. */
 	public static int maxProfit(int[] prices) {
 		if (prices == null || prices.length <= 1) {
 			return 0;
@@ -22,13 +23,7 @@ public class BestTimeToBuyAndSellStock {
 		return maxProfit;
 	}
 
-	public static void main(String[] args) {
-		int[] prices = {1};
-		int maxProfit = maxProfitByChatGpt(prices);
-		System.out.println("Maximum Profit = " + maxProfit);
-
-	}
-
+	/** This is ChatGpt's optimized logic. */
 	public static int maxProfitByChatGpt(int[] prices) {
 		if (prices == null) {
 			return 0;
@@ -47,6 +42,13 @@ public class BestTimeToBuyAndSellStock {
 		}
 
 		return maxProfit;
+	}
+
+	public static void main(String[] args) {
+		int[] prices = { 1 };
+		int maxProfit = maxProfitByChatGpt(prices);
+		System.out.println("Maximum Profit = " + maxProfit);
+
 	}
 
 }

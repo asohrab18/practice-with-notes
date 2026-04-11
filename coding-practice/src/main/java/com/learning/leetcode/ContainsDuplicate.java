@@ -5,13 +5,6 @@ import java.util.Set;
 
 public class ContainsDuplicate {
 
-	public static void main(String[] args) {
-		int[] nums = { 1,2,3,4,5,6 };
-		boolean duplicate = containsDuplicate(nums);
-		System.out.println("duplicate exists?\nANS: " + duplicate);
-
-	}
-
 	public static boolean containsDuplicate(int[] nums) {
 		if (nums == null || nums.length <= 1) {
 			return false;
@@ -23,6 +16,14 @@ public class ContainsDuplicate {
 				return true;
 			}
 		}
+
 		return false;
+	}
+
+	public static void main(String[] args) {
+		int[] nums = { 1, 2, 3, 4, 5, 6 };
+		boolean duplicate = containsDuplicate(nums);
+		System.out.println("duplicate exists?\nANS: " + duplicate);
+
 	}
 }
