@@ -30,3 +30,51 @@ It distributes the traffic in round robin fashion or randomly on the basis of so
 _________________________________________________________________________________________________________
 
 
+Q.[4]: What is Caching in System Design simple explanation?
+https://www.youtube.com/watch?v=xBTGln828Ps
+
+Caching (System Design)
+
+- Caching is a technique to store frequently used data temporarily
+- It helps reduce latency and improves performance
+
+How it works:
+- First request → fetch from DB/server (slow)
+- Response stored in cache
+- Next requests → served from cache (fast)
+- When data updates → cache is invalidated/updated
+
+What can be cached:
+- API responses
+- Database query results
+- Images, HTML, CSS
+
+Types of Cache:
+
+1. In-Memory / Local Cache
+- Stored inside application/server memory
+- Very fast
+- Example: Memcached
+
+2. Distributed Cache
+- Shared across multiple servers
+- Used in scalable systems
+- Example: Redis
+
+When to use:
+- Read-heavy systems
+- Frequently accessed data
+- Mostly static or rarely changing data
+
+CDN (Content Delivery Network):
+- Stores static content closer to users geographically
+- Reduces latency
+
+Example:
+- User in India gets data from India server instead of USA
+
+
+Caching is a technique to store frequently accessed data temporarily so that future requests can be served faster instead of hitting the database again.
+
+_________________________________________________________________________________________________________
+
