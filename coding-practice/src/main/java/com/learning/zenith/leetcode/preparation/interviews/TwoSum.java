@@ -3,6 +3,7 @@ package com.learning.zenith.leetcode.preparation.interviews;
 import java.util.HashMap;
 import java.util.Map;
 
+/** Leetcode Problem: 1 */
 public class TwoSum {
 
 	/** This is my logic by brute force but not optimized. */
