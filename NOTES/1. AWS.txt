@@ -1,6 +1,20 @@
 What is AWS EC2 for beginners?
-EC2 means Elastic Compute Cloud.
 https://www.youtube.com/watch?v=xkXZGvuerRU
+
+EC2 (Elastic Compute Cloud) is a service that provides resizable virtual servers (called instances) in the cloud.
+These servers run on AWS infrastructure, and you can launch, stop, scale, and terminate them anytime.
+You pay only for what you use (pay-as-you-go model).
+
+🧠 Better Way to Say It (Interview Version)
+
+EC2 is a service from AWS that allows users to create and manage virtual machines in the cloud. These machines can be configured with different CPU, memory, storage, and OS, and are used to deploy applications without owning physical hardware.
+
+Key Concepts You Should Remember:
+Instance → Virtual machine
+AMI (Amazon Machine Image) → Preconfigured OS template
+Instance Type → CPU/RAM configuration (e.g., t2.micro)
+Security Group → Firewall rules
+EBS (Elastic Block Store) → Storage for EC2
 ___________________________________________________________________________________________________
 
 AWS S3 simple explanation?
@@ -25,5 +39,6 @@ Key Features:
 
 
 “S3 is an object storage service from AWS where data is stored as objects inside buckets. It is highly durable, scalable, and used to store files like images, videos, and backups.”
-
 ___________________________________________________________________________________________________
+
+

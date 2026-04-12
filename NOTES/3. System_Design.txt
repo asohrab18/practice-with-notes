@@ -4,7 +4,7 @@ https://www.youtube.com/watch?v=TXJP0gzCXFQ
 Scalability:
 =========================
 Ability of system to handle more users/load.
-Should not slow down when traffic increases.
+The system should not slow down when traffic increases.
 
 
 Two types:
