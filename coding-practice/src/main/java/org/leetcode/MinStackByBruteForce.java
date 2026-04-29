@@ -1,4 +1,4 @@
-package com.learning.zenith.leetcode.preparation.interviews;
+package org.leetcode;
 
 import java.util.Comparator;
 import java.util.Stack;

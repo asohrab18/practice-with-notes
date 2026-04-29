@@ -1,4 +1,4 @@
-package com.learning.zenith.leetcode.preparation.interviews;
+package org.leetcode;
 
 /** Leetcode Problem: 11 */
 public class ContainerWithMostWater {

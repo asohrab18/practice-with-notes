@@ -1,4 +1,4 @@
-package com.learning.zenith.leetcode.preparation.interviews;
+package org.leetcode;
 
 /** Leetcode Problem: 643 */
 public class MaximumAverageSubarrayI {
