@@ -81,8 +81,8 @@ public class ListDemo {
 	}
 
 	public static void main(String[] args) {
-		List a = new ArrayList();
-		List b = new ArrayList();
+		List<Object> a = new ArrayList<>();
+		List<Object> b = new ArrayList<>();
 
 		// 1. add method
 		a.add(1);
