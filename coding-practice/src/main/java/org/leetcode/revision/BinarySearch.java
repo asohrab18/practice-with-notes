@@ -1,5 +1,6 @@
 package org.leetcode.revision;
 
+/** Leetcode Problem: 704 */
 public class BinarySearch {
 
 	public static int getIndexOfTarget(int[] nums, int target) {
@@ -8,23 +9,25 @@ public class BinarySearch {
 
 		while (startIndex <= endIndex) {
 			int midIndex = startIndex + (endIndex - startIndex) / 2;
+			int midElement = nums[midIndex];
 
-			if (nums[midIndex] == target) {
+			if (midElement == target) {
 				return midIndex;
 			}
-			if (nums[midIndex] < target) {
+
+			if (midElement < target) {
 				startIndex = midIndex + 1;
-			} else if (nums[midIndex] > target) {
+			} else if (midElement > target) {
 				endIndex = midIndex - 1;
 			}
-		}
 
-		return 0;
+		}
+		return -1;
 	}
 
 	public static void main(String[] args) {
 		int[] nums = { 3, 4, 5, 6, 7, 8, 9 };
-		int target = 9;
+		int target = 50;
 
 		int indexOfTarget = getIndexOfTarget(nums, target);
 		System.out.println("Target = " + target + "\nIndex of Target = " + indexOfTarget);

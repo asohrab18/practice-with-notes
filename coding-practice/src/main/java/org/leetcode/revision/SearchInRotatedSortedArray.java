@@ -8,34 +8,30 @@ public class SearchInRotatedSortedArray {
 		int endIndex = nums.length - 1;
 
 		while (startIndex <= endIndex) {
-			int startElement = nums[startIndex];
-
 			int midIndex = startIndex + (endIndex - startIndex) / 2;
 			int middleElement = nums[midIndex];
-
-			int endElement = nums[endIndex];
-
 			if (middleElement == target) {
 				return midIndex;
 			}
+			int startElement = nums[startIndex];
+			int endElement = nums[endIndex];
 
-			// left array is sorted
-			if (startElement <= middleElement) {
+			if (startElement <= middleElement) {// Left sorted array
 				if (startElement <= target && target < middleElement) {
 					endIndex = midIndex - 1;
 				} else {
 					startIndex = midIndex + 1;
 				}
 
-			} else {
-				// right array is sorted
-				if (middleElement < target && endElement >= target) {
+			} else {// Right sorted array
+				if (middleElement < target && target <= endElement) {
 					startIndex = midIndex + 1;
 				} else {
 					endIndex = midIndex - 1;
 				}
 			}
 		}
+
 		return -1;
 	}
 
