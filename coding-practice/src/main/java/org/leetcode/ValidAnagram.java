@@ -6,7 +6,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/** Leetcode Problem: 242 */
+/** Leetcode Problem: 242 
+ * An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, 
+ * using all the original letters exactly once.
+ * 
+ * 
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+
+Output: true
+
+Example 2:
+
+Input: s = "rat", t = "car"
+
+Output: false
+*/
 public class ValidAnagram {
 
 	/** This is my logic by brute force but not optimized. */
@@ -94,7 +110,7 @@ public class ValidAnagram {
 	}
 
 	public static void main(String[] args) {
-		String s = "aacc", t = "ccac";
+		String s = "taal", t = "laat";
 		boolean anagram = isAnagramUsingMap(s, t);
 		System.out.println(anagram);
 	}
