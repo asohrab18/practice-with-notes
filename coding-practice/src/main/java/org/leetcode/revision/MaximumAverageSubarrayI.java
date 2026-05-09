@@ -1,27 +1,11 @@
-package org.leetcode;
+package org.leetcode.revision;
 
 /** Leetcode Problem: 643 */
 public class MaximumAverageSubarrayI {
 
-	/** This solution failed in one case. Time Limit Exceeded. */
-	public static double findMaxAverageByBruteForce(int[] nums, int k) {
-		int maximumSum = Integer.MIN_VALUE;
-
-		for (int i = 0; i < nums.length - k + 1; i++) {
-			int sum = 0;
-			for (int j = i; j <= k - 1 + i; j++) {
-				sum = sum + nums[j];
-			}
-			maximumSum = Math.max(maximumSum, sum);
-		}
-
-		return (double) maximumSum / k;
-	}
-
-	/** This is universal solution provided by ChatGpt. */
 	public static double findMaxAverage(int[] nums, int k) {
-		int maximumSum = 0;
 
+		int maximumSum = 0;
 		int windowSum = 0;
 		for (int i = 0; i < k; i++) {
 			windowSum = windowSum + nums[i];
@@ -30,7 +14,6 @@ public class MaximumAverageSubarrayI {
 
 		for (int i = k; i < nums.length; i++) {
 			windowSum = windowSum + nums[i] - nums[i - k];
-
 			maximumSum = Math.max(maximumSum, windowSum);
 		}
 
