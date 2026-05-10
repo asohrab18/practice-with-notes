@@ -15,46 +15,89 @@ public class ShareMarket {
 
 	private static final BigDecimal GST_PERCENT = new BigDecimal("18");
 
-	public static BigDecimal getStt(BigDecimal amount) {
-		return calculatePercentage(amount, STT_PERCENT);
+	private static final BigDecimal STCG_PERCENT = new BigDecimal("20");
+
+	/**
+	 * When I buy some shares then I have to pay (price + some charges and 18% GST)
+	 * as applicable. The final cost of the shares is called "Avg. cost".
+	 */
+	public static BigDecimal calculateAverageCost(String price, String qty) {
+		BigDecimal oneSharePrice = getBigDecimal(price);
+		BigDecimal quantity = getBigDecimal(qty);
+		BigDecimal totalPrice = multiply(oneSharePrice, quantity);
+
+		BigDecimal totalCharges = getActualChargesOnBuy(totalPrice);
+
+		BigDecimal averageCost = add(totalPrice, totalCharges);
+
+		return averageCost;
 	}
 
-	public static BigDecimal getStampDuty(BigDecimal amount) {
-		return calculatePercentage(amount, STAMP_DUTY_PERCENT);
+	/**
+	 * When I sell my shares then actual selling price = LTP - some deductions of
+	 * charges as applicable.
+	 */
+	public static BigDecimal calculateActualSellingPrice(String ltp, String qty) {
+		BigDecimal lastTradePrice = getBigDecimal(ltp);
+		BigDecimal quantity = getBigDecimal(qty);
+
+		BigDecimal totalPrice = multiply(lastTradePrice, quantity);
+
+		BigDecimal totalCharges = getActualChargesOnSell(totalPrice);
+
+		BigDecimal actualSellingPrice = subtract(totalPrice, totalCharges);
+
+		return actualSellingPrice;
 	}
 
-	public static BigDecimal getExchangeAndSebiCharges(BigDecimal amount) {
-		return calculatePercentage(amount, EXCHANGE_SEBI_PERCENT);
-	}
+	/**
+	 * Helping methods
+	 */
+	private static BigDecimal getActualChargesOnBuy(BigDecimal amount) {
 
-	public static BigDecimal getGst(BigDecimal amount) {
-		return calculatePercentage(amount, GST_PERCENT);
-	}
-
-	public static BigDecimal getFinalBuyingCharges(BigDecimal amount) {
-
-		BigDecimal sttAndExchangeCharges = getSttAndExchangeCharges(amount);
-
+		BigDecimal stt = getStt(amount);
 		BigDecimal stampDuty = getStampDuty(amount);
+		BigDecimal exchangeAndSebiCharges = getExchangeAndSebiCharges(amount);
+		BigDecimal gst = getGst(exchangeAndSebiCharges);
 
-		BigDecimal totalCharges = add(stampDuty, sttAndExchangeCharges);
+		BigDecimal actualChargesOnBuy = stt.add(stampDuty).add(exchangeAndSebiCharges).add(gst);
 
-		BigDecimal gst = getGst(totalCharges);
-
-		BigDecimal finalBuyingCharges = add(totalCharges, gst);
-
-		return setScale(finalBuyingCharges);
+		return setScale(actualChargesOnBuy);
 	}
 
-	public static BigDecimal getFinalSellingCharges(BigDecimal amount) {
+	private static BigDecimal getActualChargesOnSell(BigDecimal amount) {
 
-		BigDecimal sttAndExchangeCharges = getSttAndExchangeCharges(amount);
+		BigDecimal stt = getStt(amount);
+		BigDecimal exchangeAndSebiCharges = getExchangeAndSebiCharges(amount);
+		BigDecimal gst = getGst(exchangeAndSebiCharges);
 
-		BigDecimal gst = getGst(sttAndExchangeCharges);
+		BigDecimal actualChargesOnSell = stt.add(exchangeAndSebiCharges).add(gst);
 
-		BigDecimal finalSellingCharges = add(sttAndExchangeCharges, gst);
+		return setScale(actualChargesOnSell);
+	}
 
-		return setScale(finalSellingCharges);
+	private static BigDecimal getStt(BigDecimal amount) {
+		return getPercentOfAmount(amount, STT_PERCENT);
+	}
+
+	private static BigDecimal getStampDuty(BigDecimal amount) {
+		return getPercentOfAmount(amount, STAMP_DUTY_PERCENT);
+	}
+
+	private static BigDecimal getExchangeAndSebiCharges(BigDecimal amount) {
+		return getPercentOfAmount(amount, EXCHANGE_SEBI_PERCENT);
+	}
+
+	private static BigDecimal getGst(BigDecimal amount) {
+		return getPercentOfAmount(amount, GST_PERCENT);
+	}
+
+	/** If holding Duration < 12 Months then Tax = 20% (STCG) */
+	public static BigDecimal calculateTax(BigDecimal profit, int holdingDurationInMonths) {
+		if (holdingDurationInMonths < 12) {
+			return getPercentOfAmount(profit, STCG_PERCENT);
+		}
+		return BigDecimal.ZERO;
 	}
 
 	public static BigDecimal add(BigDecimal value1, BigDecimal value2) {
@@ -69,46 +112,16 @@ public class ShareMarket {
 		return value1.subtract(value2);
 	}
 
-	/** Helping methods */
-	private static BigDecimal calculatePercentage(BigDecimal amount, BigDecimal percentage) {
-
-		return amount.multiply(percentage).divide(HUNDRED, 6, RoundingMode.HALF_UP);
+	public static BigDecimal getBigDecimal(String value) {
+		return new BigDecimal(value);
 	}
 
-	private static BigDecimal getSttAndExchangeCharges(BigDecimal amount) {
-		BigDecimal stt = getStt(amount);
-		BigDecimal exchangeAndSebiCharges = getExchangeAndSebiCharges(amount);
-		BigDecimal sttAndExchangeCharges = add(stt, exchangeAndSebiCharges);
-
-		return sttAndExchangeCharges;
+	private static BigDecimal getPercentOfAmount(BigDecimal amount, BigDecimal percentage) {
+		BigDecimal value = amount.multiply(percentage).divide(HUNDRED);
+		return setScale(value);
 	}
 
 	private static BigDecimal setScale(BigDecimal value) {
 		return value.setScale(2, RoundingMode.HALF_UP);
 	}
-
-	public static BigDecimal getFinalBuyingCost(BigDecimal amount, BigDecimal quantity) {
-		BigDecimal amountOfTotalShares = multiply(amount, quantity);
-		System.out.println("Amount of total shares = " + amountOfTotalShares);
-
-		BigDecimal finalBuyingCharges = getFinalBuyingCharges(amountOfTotalShares);
-		System.out.println("Total Buying Charges including GST = " + finalBuyingCharges);
-
-		BigDecimal finalBuyingCost = add(amountOfTotalShares, finalBuyingCharges);
-
-		return finalBuyingCost;
-	}
-
-	public static BigDecimal getFinalSellingValue(BigDecimal amount, BigDecimal quantity) {
-		BigDecimal sellValueOfTotalShares = multiply(amount, quantity);
-
-		System.out.println("Sell Value of total shares = " + sellValueOfTotalShares);
-
-		BigDecimal finalSellingCharges = getFinalSellingCharges(sellValueOfTotalShares);
-		System.out.println("Total Selling Charges including GST = " + finalSellingCharges);
-
-		BigDecimal finalSellValueOfTotalShares = subtract(sellValueOfTotalShares, finalSellingCharges);
-		return finalSellValueOfTotalShares;
-	}
-
 }
