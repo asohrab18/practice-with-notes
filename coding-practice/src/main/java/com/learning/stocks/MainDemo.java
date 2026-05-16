@@ -4,18 +4,37 @@ import java.math.BigDecimal;
 
 public class MainDemo {
 
-	public static void main(String[] args) {
-		//String price = "185", qty = "10";
-		//ShareMarket.calculateTotalCostIncludingChargesAndGstOnBuying(price, qty);
+	public static void calculateFinalCostOnBuying() {
+		System.out.println("Calculate final cost on buying:");
+		System.out.println("==================================");
+		String price = "185", qty = "10";
+		ShareMarket.calculateTotalCostIncludingChargesAndGstOnBuying(price, qty);
+	}
 
-		calculateActualProfitOnSell("348", "1089.41", "1234.20", "379115.40", 3);
+	public static void calculateActualProfitOrLossOnSell() {
+		System.out.println("Calculate actual profit or loss on sell:");
+		System.out.println("===========================================");
+		String qty = "50", avgCost = "593.71", ltp = "544.70", invested = "29685.35";
+		int holdingDurationInMonths = 1;
+		calculateActualProfitOrLossOnSell(qty, avgCost, ltp, invested, holdingDurationInMonths);
+	}
+
+	public static void main(String[] args) {
+		calculateFinalCostOnBuying();
+		System.out.println(
+				"\n============================================================================================");
+		System.out.println(
+				"============================================================================================");
+		System.out.println(
+				"============================================================================================\n");
+		calculateActualProfitOrLossOnSell();
 	}
 
 	/**
 	 * When I sell my shares then I get actual profit/loss after deductions of
 	 * charges and tax as applicable.
 	 */
-	public static void calculateActualProfitOnSell(String qty, String avgCost, String ltp, String invested,
+	public static void calculateActualProfitOrLossOnSell(String qty, String avgCost, String ltp, String invested,
 			int holdingDurationInMonths) {
 
 		BigDecimal actualSellingPrice = ShareMarket.calculateActualSellingPrice(ltp, qty);
@@ -31,6 +50,6 @@ public class MainDemo {
 		System.out.println("Tax = " + tax);
 
 		BigDecimal actualProfit = ShareMarket.subtract(profitOrLoss, tax);
-		System.out.println("Actual Profit after tax deduction = " + actualProfit);
+		System.out.println("Actual Profit or Loss after tax deduction = " + actualProfit);
 	}
 }
