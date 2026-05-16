@@ -17,6 +17,10 @@ public class ShareMarket {
 
 	private static final BigDecimal STCG_PERCENT = new BigDecimal("20");
 
+	private static final BigDecimal LTCG_PERCENT = new BigDecimal("12.5");
+
+	private static final BigDecimal LTCG_EXEMPTION = new BigDecimal("125000");
+
 	/**
 	 * When I buy some shares then I have to pay (price + some charges and 18% GST)
 	 * as applicable.
@@ -109,10 +113,13 @@ public class ShareMarket {
 
 		if (holdingDurationInMonths < 12) {
 			return getPercentOfAmount(profit, STCG_PERCENT);
+		} else {
+			profit = profit.subtract(LTCG_EXEMPTION);
+			if (profit.compareTo(BigDecimal.ZERO) <= 0) {
+				return BigDecimal.ZERO;
+			}
+			return getPercentOfAmount(profit, LTCG_PERCENT);
 		}
-	    // LTCG logic can be added later
-
-		return BigDecimal.ZERO;
 	}
 
 	public static BigDecimal add(BigDecimal value1, BigDecimal value2) {
