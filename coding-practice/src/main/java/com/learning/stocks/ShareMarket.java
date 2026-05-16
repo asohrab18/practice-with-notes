@@ -21,7 +21,7 @@ public class ShareMarket {
 	 * When I buy some shares then I have to pay (price + some charges and 18% GST)
 	 * as applicable.
 	 */
-	public static BigDecimal calculateTotalCostIncludingChargesAndGstOnBuying(String price, String qty) {
+	public static void calculateTotalCostIncludingChargesAndGstOnBuying(String price, String qty) {
 		BigDecimal oneSharePrice = getBigDecimal(price);
 		BigDecimal quantity = getBigDecimal(qty);
 		BigDecimal totalPrice = multiply(oneSharePrice, quantity);
@@ -31,26 +31,29 @@ public class ShareMarket {
 		BigDecimal totalCostIncludingChargesAndGstOnBuying = add(totalPrice, chargesIncludingGstOnBuying);
 		System.out.println("Current price of a new share = " + oneSharePrice);
 		System.out.println("Quantity to be ordered = " + quantity);
-		System.out.println("Total Price = " + totalPrice);
+		System.out.println("Total Price = (Current price * Quantity) = " + totalPrice);
 		System.out.println("Charges + GST = " + chargesIncludingGstOnBuying);
-		System.out.println("Total Cost including charges and GST on buying = " + totalCostIncludingChargesAndGstOnBuying);
-
-		return totalCostIncludingChargesAndGstOnBuying;
+		System.out
+				.println("Total Cost including charges and GST on buying = " + totalCostIncludingChargesAndGstOnBuying);
 	}
 
 	/**
 	 * When I sell my shares then actual selling price = LTP - some deductions of
-	 * charges as applicable.
+	 * charges, GST as applicable.
 	 */
 	public static BigDecimal calculateActualSellingPrice(String ltp, String qty) {
 		BigDecimal lastTradePrice = getBigDecimal(ltp);
 		BigDecimal quantity = getBigDecimal(qty);
-
 		BigDecimal totalPrice = multiply(lastTradePrice, quantity);
 
-		BigDecimal totalCharges = getActualChargesOnSell(totalPrice);
+		BigDecimal chargesIncludingGstOnSelling = getChargesIncludingGstOnSelling(totalPrice);
 
-		BigDecimal actualSellingPrice = subtract(totalPrice, totalCharges);
+		BigDecimal actualSellingPrice = subtract(totalPrice, chargesIncludingGstOnSelling);
+		System.out.println("Last Traded Price (LTP) of a share = " + lastTradePrice);
+		System.out.println("Quantity for selling = " + quantity);
+		System.out.println("Total Price = (LTP * Quantity) = " + totalPrice);
+		System.out.println("Charges including GST = " + chargesIncludingGstOnSelling);
+		System.out.println("Actual Selling Price = (Total Price - Charges including GST) = " + actualSellingPrice);
 
 		return actualSellingPrice;
 	}
@@ -70,15 +73,15 @@ public class ShareMarket {
 		return setScale(chargesIncludingGstOnBuying);
 	}
 
-	private static BigDecimal getActualChargesOnSell(BigDecimal amount) {
+	private static BigDecimal getChargesIncludingGstOnSelling(BigDecimal amount) {
 
 		BigDecimal stt = getStt(amount);
 		BigDecimal exchangeAndSebiCharges = getExchangeAndSebiCharges(amount);
 		BigDecimal gst = getGst(exchangeAndSebiCharges);
 
-		BigDecimal actualChargesOnSell = stt.add(exchangeAndSebiCharges).add(gst);
+		BigDecimal chargesIncludingGstOnSelling = stt.add(exchangeAndSebiCharges).add(gst);
 
-		return setScale(actualChargesOnSell);
+		return setScale(chargesIncludingGstOnSelling);
 	}
 
 	private static BigDecimal getStt(BigDecimal amount) {
@@ -99,9 +102,16 @@ public class ShareMarket {
 
 	/** If holding Duration < 12 Months then Tax = 20% (STCG) */
 	public static BigDecimal calculateTax(BigDecimal profit, int holdingDurationInMonths) {
+		System.out.println("Holding duration = " + holdingDurationInMonths + " month(s)");
+		if (profit.compareTo(BigDecimal.ZERO) <= 0) {
+			return BigDecimal.ZERO;
+		}
+
 		if (holdingDurationInMonths < 12) {
 			return getPercentOfAmount(profit, STCG_PERCENT);
 		}
+	    // LTCG logic can be added later
+
 		return BigDecimal.ZERO;
 	}
 
