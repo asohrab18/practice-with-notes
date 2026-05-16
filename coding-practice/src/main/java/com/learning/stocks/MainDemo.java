@@ -5,15 +5,12 @@ import java.math.BigDecimal;
 public class MainDemo {
 
 	public static void main(String[] args) {
-		System.out.println("================= Check before buying a new stock ===================");
-		String price = "100", qty = "100";
-		BigDecimal averageCost = ShareMarket.calculateAverageCost(price, qty);
-		System.out.println("Current price of a new share = " + price);
-		System.out.println("Quantity to be ordered = " + qty);
-		System.out.println("Average Cost after all charges and 18% GST = " + averageCost);
+		String price = "1000", qty = "10";
+		ShareMarket.calculateTotalCostIncludingChargesAndGstOnBuying(price, qty);
+		
 
-		System.out.println("\n\n================= Check before selling the shares ===================");
-		calculateActualProfitOnSell("100", "100.12", "120", "10012", 6);
+		//System.out.println("\n\n================= Check before selling the shares ===================");
+		//calculateActualProfitOnSell("100", "100.12", "120", "10012", 6);
 	}
 
 	/**

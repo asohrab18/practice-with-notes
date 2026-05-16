@@ -19,18 +19,23 @@ public class ShareMarket {
 
 	/**
 	 * When I buy some shares then I have to pay (price + some charges and 18% GST)
-	 * as applicable. The final cost of the shares is called "Avg. cost".
+	 * as applicable.
 	 */
-	public static BigDecimal calculateAverageCost(String price, String qty) {
+	public static BigDecimal calculateTotalCostIncludingChargesAndGstOnBuying(String price, String qty) {
 		BigDecimal oneSharePrice = getBigDecimal(price);
 		BigDecimal quantity = getBigDecimal(qty);
 		BigDecimal totalPrice = multiply(oneSharePrice, quantity);
 
-		BigDecimal totalCharges = getActualChargesOnBuy(totalPrice);
+		BigDecimal chargesIncludingGstOnBuying = getChargesIncludingGstOnBuying(totalPrice);
 
-		BigDecimal averageCost = add(totalPrice, totalCharges);
+		BigDecimal totalCostIncludingChargesAndGstOnBuying = add(totalPrice, chargesIncludingGstOnBuying);
+		System.out.println("Current price of a new share = " + oneSharePrice);
+		System.out.println("Quantity to be ordered = " + quantity);
+		System.out.println("Total Price = " + totalPrice);
+		System.out.println("Charges + GST = " + chargesIncludingGstOnBuying);
+		System.out.println("Total Cost including charges and GST on buying = " + totalCostIncludingChargesAndGstOnBuying);
 
-		return averageCost;
+		return totalCostIncludingChargesAndGstOnBuying;
 	}
 
 	/**
@@ -53,16 +58,16 @@ public class ShareMarket {
 	/**
 	 * Helping methods
 	 */
-	private static BigDecimal getActualChargesOnBuy(BigDecimal amount) {
+	private static BigDecimal getChargesIncludingGstOnBuying(BigDecimal amount) {
 
 		BigDecimal stt = getStt(amount);
 		BigDecimal stampDuty = getStampDuty(amount);
 		BigDecimal exchangeAndSebiCharges = getExchangeAndSebiCharges(amount);
 		BigDecimal gst = getGst(exchangeAndSebiCharges);
 
-		BigDecimal actualChargesOnBuy = stt.add(stampDuty).add(exchangeAndSebiCharges).add(gst);
+		BigDecimal chargesIncludingGstOnBuying = stt.add(stampDuty).add(exchangeAndSebiCharges).add(gst);
 
-		return setScale(actualChargesOnBuy);
+		return setScale(chargesIncludingGstOnBuying);
 	}
 
 	private static BigDecimal getActualChargesOnSell(BigDecimal amount) {
