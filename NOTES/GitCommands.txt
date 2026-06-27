@@ -20,7 +20,7 @@ Clone a repository:
 git clone <repo-url>
 
 For example: 
-git clone https://github.com/asohrab18/practice-with-notes.git
+git clone https://github.com/asohrab18/Microservices
 
 
 Command to know the actual location of repository in my system:
