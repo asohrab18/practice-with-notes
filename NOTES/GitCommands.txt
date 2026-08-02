@@ -1,107 +1,93 @@
 1. Basic Setup
 
-Install Git: https://git-scm.com/downloads
+[1.1] Install Git: https://git-scm.com/downloads
 
-Configure user info:
-
+[1.2] Configure user info:
 git config --global user.name "Sohrab Alam"
 git config --global user.email "sohrab.alam86@gmail.com"
 
-
-Check version:
-
+[1.3] Check version:
 git --version
 
 _______________________________________________________________________________________________________________________
 
 2. Core Git Workflow
 
-Clone a repository:
+[2.1] Clone a repository:
 git clone <repo-url>
 
 For example: 
 git clone https://github.com/asohrab18/Microservices
 
 
-Command to know the actual location of repository in my system:
+[2.2] Command to know the actual location of repository in my system:
 pwd
 
 Output: /c/Users/ULTRA/loggers-repo
 
 
-Check repository status:
+[2.3] Check repository status:
 git status
 
 
-
-Add changes:
+[2.4] Add changes:
 git add <file>   # single file
 git add .        # all changes
 
 
-Commit changes:
+[2.5] Commit changes:
 git commit -m "Your commit message"
 
 For example:
 git commit -m "Java9 allows private methods."
 
-Push changes to remote:
+[2.6] Push changes to remote:
 git push origin <branch-name>
 
 For example:
 git push origin main
 
 
-Pull latest changes from remote:
+[2.7] Pull latest changes from remote:
 git pull origin <branch-name>
 
 _______________________________________________________________________________________________________________________
 
 3. Branching (Essential for Java projects)
 
-Create a new branch:
+[3.1] Create a new branch:
 git checkout -b feature/my-feature
 
 
-Switch branches:
+[3.2] Switch branches:
 git checkout main
 
-
-
-
-Merge branch:
+[3.3] Merge branch:
 git merge feature/my-feature
 
 _______________________________________________________________________________________________________________________
 
-
 4. Undo mistakes safely
 
-Unstage a file:
+[4.1] Unstage a file:
 git reset HEAD <file>
 
-
-Discard local changes:
+[4.2] Discard local changes:
 git checkout -- <file>
 
-
-
-Revert a commit:
+[4.3] Revert a commit:
 git revert <commit-hash>
 
 _______________________________________________________________________________________________________________________
 
 5. Best practices
 
-Commit often with meaningful messages.
+[5.1] Commit often with meaningful messages.
 
-Pull before pushing to avoid conflicts.
+[5.2] Pull before pushing to avoid conflicts.
 
-Use branches for features or bug fixes.
+[5.3] Use branches for features or bug fixes.
 
-Learn to read Git logs:
+[5.4] Learn to read Git logs:
 git log --oneline --graph --all
-
-
-
 _______________________________________________________________________________________________________________________
