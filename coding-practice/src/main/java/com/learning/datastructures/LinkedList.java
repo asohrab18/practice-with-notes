@@ -7,7 +7,6 @@ public class LinkedList {
 	int length;
 
 	public LinkedList() {
-
 	}
 
 	public LinkedList(int val) {
@@ -31,8 +30,8 @@ public class LinkedList {
 
 	public void reverse() {
 		if (head == null || head.next == null) {
-	        return;
-	    }
+			return;
+		}
 		Node temp = head;
 		head = tail;
 		tail = temp;
