@@ -1,7 +1,6 @@
 package org.leetcode.revision;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 /** Leetcode Problem: 242 */
 public class ValidAnagram {
@@ -10,32 +9,24 @@ public class ValidAnagram {
 		if (s == null || t == null || s.length() != t.length()) {
 			return false;
 		}
-
-		Map<Character, Integer> frequencyMap = new HashMap<>();
-		for (int i = 0; i < s.length(); i++) {
-			char ch = s.charAt(i);
-			frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0) + 1);
+		if (s.equals("") && t.equals("")) {
+			return true;
 		}
 
-		for (int i = 0; i < t.length(); i++) {
-			char ch = t.charAt(i);
+		char[] sarr = s.toCharArray();
+		char[] tarr = t.toCharArray();
 
-			if (!frequencyMap.containsKey(ch)) {
-				return false;
-			}
+		Arrays.sort(sarr);
+		Arrays.sort(tarr);
 
-			frequencyMap.put(ch, frequencyMap.get(ch) - 1);
+		String s1 = new String(sarr);
+		String t1 = new String(tarr);
 
-			if (frequencyMap.get(ch) == 0) {
-				frequencyMap.remove(ch);
-			}
-		}
-
-		return frequencyMap.isEmpty();
+		return s1.equals(t1);
 	}
 
 	public static void main(String[] args) {
-		String s = "rat", t = "cat";
+		String s = "anagram", t = "nagaram";
 		boolean anagram = new ValidAnagram().isAnagram(s, t);
 		System.out.println(anagram ? "Anagram" : "Not Anagram");
 	}

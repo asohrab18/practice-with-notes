@@ -1,4 +1,4 @@
-package com.learning;
+package com.learning.programs;
 
 public class ReverseString {
 

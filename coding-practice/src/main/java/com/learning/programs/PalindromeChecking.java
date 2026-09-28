@@ -1,4 +1,4 @@
-package com.learning;
+package com.learning.programs;
 
 /** Palindrome is a string which is equivalent to its reverse. */
 public class PalindromeChecking {
