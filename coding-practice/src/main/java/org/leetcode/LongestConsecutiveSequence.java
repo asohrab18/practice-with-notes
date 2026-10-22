@@ -13,7 +13,9 @@ public class LongestConsecutiveSequence {
 		if (nums == null || nums.length == 0) {
 			return 0;
 		}
-
+		if (nums.length == 1) {
+			return 1;
+		}
 		// Remove Duplicate Items
 		Set<Integer> hs = new HashSet<>();
 		for (int num : nums) {
