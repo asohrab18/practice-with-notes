@@ -1,8 +1,9 @@
-package org.leetcode.revision;
+package org.leetcode;
 
 /** Leetcode Problem: 238 */
 public class ProductOfArrayExceptSelf {
 
+	// Copied from ChatGpt
 	public static int[] productExceptSelf(int[] nums) {
 		int size = nums.length;
 		int answer[] = new int[size];

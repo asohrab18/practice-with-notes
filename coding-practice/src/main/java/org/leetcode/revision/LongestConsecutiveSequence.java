@@ -1,50 +1,49 @@
 package org.leetcode.revision;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /** Leetcode Problem: 128 */
 public class LongestConsecutiveSequence {
 
 	public int longestConsecutive(int[] nums) {
-		Arrays.sort(nums);
+		if (nums == null || nums.length == 0) {
+			return 0;
+		}
+
+		//Remove Duplicate Items
 		Set<Integer> hs = new HashSet<>();
-		for (int i : nums) {
-			hs.add(i);
+		for (int num : nums) {
+			hs.add(num);
 		}
-		System.out.println(hs);
+
 		List<Integer> al = new ArrayList<>(hs);
-		Map<Integer, int[]> dm = new HashMap<>();
-		int[] res = new int[al.size()];
+		
+		//Sort Items in ASC order
+		Collections.sort(al);
 
-		int diff = 0;
-		for (int i = 0; i < al.size(); i++) {
-			if (i == 0) {
-				res[i] = al.get(i);
-				dm.put(diff, res);
-			}
-			if (i == 1) {
-				res[i] = al.get(i);
+		int longest = 1;
+		int current = 1;
 
-				diff = al.get(i) - al.get(i - 1);
+		for (int i = 1; i < al.size(); i++) {
+			int item = al.get(i);
+			int previousItem = al.get(i - 1);
 
-				dm.put(diff, res);
+			int difference = item - previousItem;
+
+			if (difference == 1) {
+				current++;
+
 			} else {
-				res[i] = al.get(i);
-				diff = al.get(i) - al.get(i - 1);
-				if (dm.containsKey(diff)) {
-					dm.put(diff, res);
-				}
+				longest = Math.max(longest, current);
+				current = 1;
 			}
 		}
 
-		System.out.println(dm);
-		return 0;
+		return Math.max(longest, current);
 	}
 
 	public static void main(String[] args) {
@@ -57,8 +56,10 @@ public class LongestConsecutiveSequence {
 		 * 
 		 * 3. Input: nums = [1,0,1,2] nums = [0,1,2] Output: 3
 		 * 
+		 * 4. Input: nums = [1,100] Output: 1
+		 * 
 		 */
-		int nums[] = { 100, 4, 200, 1, 3, 2 };
+		int nums[] = { 10, 11, 12, 1, 2, 3, 10, 11, 12, 13 };
 		LongestConsecutiveSequence lcs = new LongestConsecutiveSequence();
 		int len = lcs.longestConsecutive(nums);
 		System.out.println(len);
