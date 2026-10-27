@@ -23,7 +23,7 @@ Input: s = "rat", t = "car"
 
 Output: false
 */
-public class ValidAnagram {
+public class P242_ValidAnagram {
 
 	/** This is my logic by brute force but not optimized. */
 	public static boolean isAnagramUsingList(String s, String t) {

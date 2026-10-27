@@ -1,7 +1,7 @@
 package org.leetcode;
 
 /** Leetcode Problem: 11 */
-public class ContainerWithMostWater {
+public class P11_ContainerWithMostWater {
 
 	/** This is ChatGpt's optimized logic. I understand it. */
 	public static int maxArea(int[] heightArray) {

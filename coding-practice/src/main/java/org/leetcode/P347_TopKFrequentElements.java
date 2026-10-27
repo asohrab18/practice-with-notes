@@ -1,4 +1,4 @@
-package org.leetcode.revision;
+package org.leetcode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /** Leetcode Problem: 347 */
-public class TopKFrequentElements {
+public class P347_TopKFrequentElements {
 
 	public int[] topKFrequent(int[] nums, int k) {
 		Map<Integer, Integer> freqMap = new HashMap<>();
@@ -31,7 +31,7 @@ public class TopKFrequentElements {
 	public static void main(String[] args) {
 		int[] nums = { 4, 1, -1, 2, -1, 2, 3 };
 		int k = 2;
-		int[] result = new TopKFrequentElements().topKFrequent(nums, k);
+		int[] result = new P347_TopKFrequentElements().topKFrequent(nums, k);
 		for (int i : result) {
 			System.out.println(i);
 		}

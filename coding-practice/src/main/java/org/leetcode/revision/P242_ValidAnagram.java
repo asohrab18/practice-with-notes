@@ -3,7 +3,7 @@ package org.leetcode.revision;
 import java.util.Arrays;
 
 /** Leetcode Problem: 242 */
-public class ValidAnagram {
+public class P242_ValidAnagram {
 
 	public boolean isAnagram(String s, String t) {
 		if (s == null || t == null || s.length() != t.length()) {
@@ -27,7 +27,7 @@ public class ValidAnagram {
 
 	public static void main(String[] args) {
 		String s = "anagram", t = "nagaram";
-		boolean anagram = new ValidAnagram().isAnagram(s, t);
+		boolean anagram = new P242_ValidAnagram().isAnagram(s, t);
 		System.out.println(anagram ? "Anagram" : "Not Anagram");
 	}
 }

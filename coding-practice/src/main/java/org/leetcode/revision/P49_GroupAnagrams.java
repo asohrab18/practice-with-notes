@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /** Leetcode Problem: 49 */
-public class GroupAnagrams {
+public class P49_GroupAnagrams {
 
 	public static boolean isAnagram(String s, String t) {
 		if (s == null || t == null || s.length() != t.length()) {
@@ -61,7 +61,7 @@ public class GroupAnagrams {
 	public static void main(String[] args) {
 		String[] strs = { "eat","tea", "tan", "ate", "nat", "bat" };
 
-		System.out.println("All Anagrams = " + new GroupAnagrams().groupAnagrams(strs));
+		System.out.println("All Anagrams = " + new P49_GroupAnagrams().groupAnagrams(strs));
 	}
 	
 	public List<List<String>> groupAnagramsBKP(String[] strs) {

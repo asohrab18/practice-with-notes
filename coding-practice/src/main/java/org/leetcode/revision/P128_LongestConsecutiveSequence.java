@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 /** Leetcode Problem: 128 */
-public class LongestConsecutiveSequence {
+public class P128_LongestConsecutiveSequence {
 
 	// length of the longest consecutive elements sequence
 	public int longestConsecutive(int[] nums) {
@@ -63,7 +63,7 @@ public class LongestConsecutiveSequence {
 		 * 
 		 */
 		int nums[] = { 1, 0, 1, 2 };
-		LongestConsecutiveSequence lcs = new LongestConsecutiveSequence();
+		P128_LongestConsecutiveSequence lcs = new P128_LongestConsecutiveSequence();
 		int len = lcs.longestConsecutive(nums);
 		System.out.println(len);
 

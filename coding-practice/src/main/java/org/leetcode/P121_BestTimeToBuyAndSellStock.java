@@ -1,7 +1,7 @@
 package org.leetcode;
 
 /** Leetcode Problem: 121 */
-public class BestTimeToBuyAndSellStock {
+public class P121_BestTimeToBuyAndSellStock {
 
 	/** This is my logic inspired by ChatGpt's optimized logic. */
 	public static int maxProfit(int[] prices) {

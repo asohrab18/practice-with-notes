@@ -6,12 +6,12 @@ import java.util.Stack;
  * Leetcode Problem: 155: Solution by ChatGpt. It has time complexity =
  * O(1)
  */
-public class MinStack {
+public class P155_MinStack {
 
 	Stack<Integer> inputStack;
 	Stack<Integer> minValueStack;
 
-	public MinStack() {
+	public P155_MinStack() {
 		inputStack = new Stack<>();
 		minValueStack = new Stack<>();
 	}
@@ -49,7 +49,7 @@ public class MinStack {
 	}
 
 	public static void main(String[] args) {
-		MinStack minStack = new MinStack();
+		P155_MinStack minStack = new P155_MinStack();
 		minStack.push(-2);
 		minStack.push(0);
 		minStack.push(-3);

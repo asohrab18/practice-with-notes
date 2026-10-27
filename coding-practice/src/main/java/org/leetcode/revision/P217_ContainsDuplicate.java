@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /** Leetcode Problem: 217 */
-public class ContainsDuplicate {
+public class P217_ContainsDuplicate {
 
 	public static boolean containsDuplicate(int[] nums) {
 		if (nums == null || nums.length <= 1) {

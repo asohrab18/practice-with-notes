@@ -3,7 +3,7 @@ package org.leetcode;
 import com.learning.datastructures.Node;
 
 /** Leetcode Problem: 141 */
-public class LinkedListCycle {
+public class P141_LinkedListCycle {
 
 	public static boolean hasCycle(Node head) {
 		Node slow = head;

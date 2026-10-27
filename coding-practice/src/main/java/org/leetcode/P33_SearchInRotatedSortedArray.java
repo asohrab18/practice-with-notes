@@ -1,7 +1,7 @@
 package org.leetcode;
 
 /** Leetcode Problem: 33 */
-public class SearchInRotatedSortedArray {
+public class P33_SearchInRotatedSortedArray {
 
 	public static int search(int[] nums, int target) {
 		int start = 0;

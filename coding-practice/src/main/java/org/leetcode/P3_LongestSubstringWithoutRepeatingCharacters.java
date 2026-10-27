@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /** Leetcode Problem: 3 */
-public class LongestSubstringWithoutRepeatingCharacters {
+public class P3_LongestSubstringWithoutRepeatingCharacters {
 
 	public static void main(String[] args) {
 		String s = "pwwkew";

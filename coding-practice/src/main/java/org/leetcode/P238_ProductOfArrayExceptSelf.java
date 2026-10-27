@@ -1,7 +1,7 @@
 package org.leetcode;
 
 /** Leetcode Problem: 238 */
-public class ProductOfArrayExceptSelf {
+public class P238_ProductOfArrayExceptSelf {
 
 	// Copied from ChatGpt
 	public static int[] productExceptSelf(int[] nums) {
@@ -24,7 +24,7 @@ public class ProductOfArrayExceptSelf {
 	}
 
 	public static void main(String[] args) {
-		int nums[] = { 2, 3, 4, 5 };
+		int nums[] = { 1,2, 3, 4 };
 		int answer[] = productExceptSelf(nums);
 
 		for (int i : answer) {

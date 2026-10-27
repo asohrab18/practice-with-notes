@@ -1,7 +1,7 @@
 package org.leetcode;
 
 /** Leetcode Problem: 643 */
-public class MaximumAverageSubarrayI {
+public class P643_MaximumAverageSubarrayI {
 
 	/** This solution failed in one case. Time Limit Exceeded. */
 	public static double findMaxAverageByBruteForce(int[] nums, int k) {

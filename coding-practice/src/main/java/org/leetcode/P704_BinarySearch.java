@@ -1,7 +1,7 @@
 package org.leetcode;
 
 /** Leetcode Problem: 704 */
-public class BinarySearch {
+public class P704_BinarySearch {
 
 	public static int search(int[] nums, int target) {
 		int start = 0;

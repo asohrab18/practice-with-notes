@@ -8,11 +8,11 @@ import java.util.Stack;
  * but getMin() has time complexity = O(n) 
  * because it checks all the stack elements one by one for minimum value.
  */
-public class MinStackByBruteForce {
+public class P155_MinStackByBruteForce {
 
 	Stack<Integer> stack = null;
 
-	public MinStackByBruteForce() {
+	public P155_MinStackByBruteForce() {
 		stack = new Stack<>();
 	}
 
@@ -41,7 +41,7 @@ public class MinStackByBruteForce {
 	}
 
 	public static void main(String[] args) {
-		MinStackByBruteForce minStack = new MinStackByBruteForce();
+		P155_MinStackByBruteForce minStack = new P155_MinStackByBruteForce();
 		minStack.push(-2);
 		minStack.push(0);
 		minStack.push(-3);
