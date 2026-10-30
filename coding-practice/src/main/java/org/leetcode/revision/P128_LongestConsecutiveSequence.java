@@ -18,31 +18,33 @@ public class P128_LongestConsecutiveSequence {
 			return 1;
 		}
 
+		// Remove duplicates
 		Set<Integer> numSet = new HashSet<>();
 		for (int i : nums) {
 			numSet.add(i);
 		}
 
+		// Sort the array
 		List<Integer> numList = new ArrayList<>(numSet);
 		Collections.sort(numList);
 
-		int longestConsecutiveSequenceLength = 1;
-		int currentConsecutiveSequenceLength = 1;
+		int longestLength = 1;
+		int currentLength = 1;
 
 		for (int i = 1; i < numList.size(); i++) {
-			int previousItem = numList.get(i - 1);
+			int previous = numList.get(i - 1);
 			int currentItem = numList.get(i);
-			long difference = (long) currentItem - previousItem;
+			long difference = (long) currentItem - previous;
+
 			if (difference == 1) {
-				currentConsecutiveSequenceLength++;
+				currentLength++;
 			} else {
-				longestConsecutiveSequenceLength = Math.max(longestConsecutiveSequenceLength,
-						currentConsecutiveSequenceLength);
-				currentConsecutiveSequenceLength = 1;
+				longestLength = Math.max(longestLength, currentLength);
+				currentLength = 1;
 			}
 		}
 
-		return Math.max(longestConsecutiveSequenceLength, currentConsecutiveSequenceLength);
+		return Math.max(longestLength, currentLength);
 	}
 
 	public static void main(String[] args) {
