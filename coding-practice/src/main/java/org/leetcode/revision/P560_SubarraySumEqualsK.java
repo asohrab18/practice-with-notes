@@ -7,6 +7,10 @@ package org.leetcode.revision;
 public class P560_SubarraySumEqualsK {
 
 	public int subarraySum(int[] nums, int k) {
+		if (nums == null) {
+			return 0;
+		}
+
 		int totalNumberOfSubarrays = 0;
 
 		for (int i = 0; i < nums.length; i++) {
@@ -26,7 +30,7 @@ public class P560_SubarraySumEqualsK {
 	}
 
 	public static void main(String[] args) {
-		int[] nums = { 1, 2, 3 };
+		int[] nums = { 1, 2, 3, 4 };
 		int k = 3;
 
 		P560_SubarraySumEqualsK p = new P560_SubarraySumEqualsK();
