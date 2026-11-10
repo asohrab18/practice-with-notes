@@ -246,6 +246,37 @@ public class RevisionPractise {
 		System.out.println(rp.subarraySum(nums, k));
 	}
 
+	public int containerWithMostWater(int[] height) {
+		int maxArea = 0;
+		int leftIndex = 0;
+		int rightIndex = height.length - 1;
+
+		while (leftIndex < rightIndex) {
+			int leftHeight = height[leftIndex];
+			int rightHeight = height[rightIndex];
+
+			int width = rightIndex - leftIndex;
+			int minimumHeight = Math.min(leftHeight, rightHeight);
+
+			int area = width * minimumHeight;
+			maxArea = Math.max(maxArea, area);
+
+			if (leftHeight < rightHeight) {
+				leftIndex++;
+			} else {
+				rightIndex--;
+			}
+		}
+
+		return maxArea;
+	}
+
+	public static void printContainerWithMostWater(RevisionPractise rp) {
+
+		int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+		System.out.println(rp.containerWithMostWater(height));
+	}
+
 	public static void main(String[] args) {
 		RevisionPractise rp = new RevisionPractise();
 		// printTwoSum(rp);
@@ -256,7 +287,8 @@ public class RevisionPractise {
 		// printProductExceptSelf(rp);
 		// printLongestConsecutive(rp);
 		// printMaxSubArray(rp);
-		printSubarraySum(rp);
+		// printSubarraySum(rp);
+		printContainerWithMostWater(rp);
 
 	}
 

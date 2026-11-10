@@ -5,52 +5,43 @@ import java.util.regex.Pattern;
 
 public class RejexDemo {
 
-	// 1. A string must contain exactly 5 digits.
-	public static boolean isValidWithExactly5Digits_V1(String input) {
-		String regex = "\\d{5}";
-		return input.matches(regex);
+	public static void main(String[] args) {
+		System.out.println("One or more digit:");
+		matchesFindLookingAt("abc123xyz", "\\d+");
+		System.out.println("________________________________________________");
+
+		System.out.println("Exactly 5 digits:");
+		matchesFindLookingAt("12345", "\\d{5}");
+		System.out.println("________________________________________________");
+
+		System.out.println("Exactly 3 digits:");
+		matchesFindLookingAt("12345", "\\d{3}");
+		System.out.println("________________________________________________");
+
+		System.out.println("Extract Numbers:");
+		extractNumbers("Order 123, Product 456");
+		System.out.println("________________________________________________");
+		
+		validateUsername("asohrab18");
+		System.out.println("________________________________________________");
+		
+		removeSpecialCharsAndSpace("The man is powerful @123 *&^^%$#@@.");
+		System.out.println("________________________________________________");
 	}
 
-	public static boolean isValidWithExactly5Digits_V2(String input) {
-		String regex = "\\d{5}";
+	public static void matchesFindLookingAt(String input, String regex) {
 		Pattern p = Pattern.compile(regex);
-		Matcher matcher = p.matcher(input);
-
-		return matcher.matches();
-	}
-
-	public static void isValid(String input) {
-		String regex = "\\d{3}";
-		Pattern p = Pattern.compile(regex);
-		Matcher matcher = p.matcher(input);
-
-		// Attempts to match the entire region against the pattern.
-		boolean m = matcher.matches();
-		System.out.println(m);
+		Matcher m = p.matcher(input);
 
 		// Attempts to find the next subsequence of the input that matches the pattern.
-		boolean f = matcher.find();
-		System.out.println(f);
+		System.out.println("find: " + m.find());
 
 		// Attempts to match the input sequence, starting at the beginning of the
 		// region, against the pattern.
-		boolean l = matcher.lookingAt();
-		System.out.println(l);
-	}
+		System.out.println("lookingAt: " + m.lookingAt());
 
-	public static void isValidWithOneOrMoreDigits(String input) {
-		String regex = "\\d+";
-		Pattern p = Pattern.compile(regex);
-		Matcher matcher = p.matcher(input);
-
-		boolean f = matcher.find();
-		System.out.println(f);
-
-		boolean l = matcher.lookingAt();
-		System.out.println(l);
-
-		boolean m = matcher.matches();
-		System.out.println(m);
+		// Attempts to match the entire region against the pattern.
+		System.out.println("matches: " + m.matches());
 	}
 
 	public static void extractNumbers(String input) {
@@ -63,15 +54,19 @@ public class RejexDemo {
 			String g = matcher.group();
 			System.out.println(g);
 		}
-
 	}
 
-	public static void main(String[] args) {
-		// System.out.println(isValidWithExactly5Digits_V1("12345"));
-		// System.out.println(isValidWithExactly5Digits_V2("12345"));
-		// isValid("9998abc123def");
-		// isValidWithOneOrMoreDigits("123");
-		extractNumbers("Order123#Product456TESTING@789");
+	// Validate a username that contains only lowercase letters and digits.
+	// It must have a length between 5 and 12 characters.
+	public static void validateUsername(String username) {
+		String regex = "[a-z0-9]{5,12}";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(username);
+		System.out.println(m.matches() ? "Valid Username" : "Invalid Username");
 	}
-
+	
+	public static void removeSpecialCharsAndSpace(String input) {
+		String regex = "[^a-zA-Z0-9]";
+		System.out.println(input.replaceAll(regex, ""));
+	}
 }

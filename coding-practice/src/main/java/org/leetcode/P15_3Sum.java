@@ -6,7 +6,16 @@ import java.util.List;
 
 public class P15_3Sum {
 
-	//COPIED FROM CHAT GPT
+	// COPIED FROM CHAT GPT
+
+	public static void main(String[] args) {
+		P15_3Sum p = new P15_3Sum();
+
+		int[] nums = { -4, -1, -1, 0, 1, 2 };
+		List<List<Integer>> resultList = p.threeSum(nums);
+		System.out.println(resultList);
+	}
+
 	public List<List<Integer>> threeSum(int[] nums) {
 		List<List<Integer>> result = new ArrayList<>();
 
@@ -61,14 +70,6 @@ public class P15_3Sum {
 		}
 
 		return result;
-	}
-
-	public static void main(String[] args) {
-		P15_3Sum p = new P15_3Sum();
-
-		int[] nums = { -1, 0, 1 };
-		List<List<Integer>> resultList = p.threeSum(nums);
-		System.out.println(resultList);
 	}
 
 }
