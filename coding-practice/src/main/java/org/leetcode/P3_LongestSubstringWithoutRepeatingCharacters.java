@@ -7,13 +7,29 @@ import java.util.Map;
 public class P3_LongestSubstringWithoutRepeatingCharacters {
 
 	public static void main(String[] args) {
-		String s = "pwwkew";
-		String longestSubstring = getLongestSubstring(s);
-		System.out.println("Longest Substring:" + longestSubstring);
-		System.out.println("Length of Longest Substring = " + longestSubstring.length());
+		P3_LongestSubstringWithoutRepeatingCharacters p = new P3_LongestSubstringWithoutRepeatingCharacters();
+
+		String s = "ccbbcc";// ccbbcc, pwwkew;
+		System.out.println("Length of Longest Substring = " + p.lengthOfLongestSubstring(s));
 	}
 
-	/** I implemented with the help of ChatGpt. */
+	/** Solution by ChatGpt */
+	public int lengthOfLongestSubstring(String s) {
+		int leftIndex = 0, maximumLength = 0;
+		Map<Character, Integer> charIndexMap = new HashMap<>();
+		for (int currentIndex = 0; currentIndex < s.length(); currentIndex++) {
+			char ch = s.charAt(currentIndex);
+			if (charIndexMap.containsKey(ch)) {
+				leftIndex = Math.max(leftIndex, charIndexMap.get(ch) + 1);
+			}
+			charIndexMap.put(ch, currentIndex);
+			int lengthOfSubstring = currentIndex - leftIndex + 1;
+			maximumLength = Math.max(maximumLength, lengthOfSubstring);
+		}
+		return maximumLength;
+	}
+
+	/** ROUGH: I implemented with the help of ChatGpt. */
 	public static String getLongestSubstring(String s) {
 		Map<Character, Integer> charIndexMap = new HashMap<>();
 
@@ -38,28 +54,4 @@ public class P3_LongestSubstringWithoutRepeatingCharacters {
 
 		return s.substring(startIndex, startIndex + maximumLength);
 	}
-
-	/** Solution by ChatGpt */
-	public static int lengthOfLongestSubstring(String s) {
-
-		int leftIndex = 0, maximumLength = 0;
-
-		Map<Character, Integer> charIndexMap = new HashMap<>();
-
-		for (int currentIndex = 0; currentIndex < s.length(); currentIndex++) {
-			char ch = s.charAt(currentIndex);
-
-			if (charIndexMap.containsKey(ch)) {
-				leftIndex = Math.max(leftIndex, charIndexMap.get(ch) + 1);
-			}
-
-			charIndexMap.put(ch, currentIndex);
-
-			int lengthOfSubstring = currentIndex - leftIndex + 1;
-			maximumLength = Math.max(maximumLength, lengthOfSubstring);
-		}
-
-		return maximumLength;
-	}
-
 }

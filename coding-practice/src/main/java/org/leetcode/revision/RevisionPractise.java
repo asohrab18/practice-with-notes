@@ -277,6 +277,55 @@ public class RevisionPractise {
 		System.out.println(rp.containerWithMostWater(height));
 	}
 
+	public int maxProfit(int[] prices) {
+		int maxProfit = 0;
+		int minimumCostPrice = prices[0];
+
+		for (int i = 1; i < prices.length; i++) {
+			int price = prices[i];
+			if (price < minimumCostPrice) {
+				minimumCostPrice = price;
+			} else {
+				int profit = price - minimumCostPrice;
+				maxProfit = Math.max(maxProfit, profit);
+			}
+		}
+
+		return maxProfit;
+	}
+
+	public static void bestTimeToBuyAndSellStock(RevisionPractise rp) {
+		int[] prices = { 7, 6, 4, 3, 1 };
+		int maxProfit = rp.maxProfit(prices);
+		System.out.println("Max Profit = " + maxProfit);
+	}
+
+	public int lengthOfLongestSubstring(String s) {
+		int maxLength = 0, leftIndex = 0;
+		Map<Character, Integer> indexMap = new HashMap<>();
+
+		for (int i = 0; i < s.length(); i++) {
+			char ch = s.charAt(i);
+
+			if (indexMap.containsKey(ch)) {
+				leftIndex = Math.max(leftIndex, indexMap.get(ch) + 1);
+			}
+
+			indexMap.put(ch, i);
+
+			int lengthOfSubstring = i - leftIndex + 1;
+
+			maxLength = Math.max(maxLength, lengthOfSubstring);
+		}
+
+		return maxLength;
+	}
+
+	public static void printLengthOfLongestSubstring(RevisionPractise rp) {
+		int len = rp.lengthOfLongestSubstring("ccbbcc");
+		System.out.println("Max length = " + len);
+	}
+
 	public static void main(String[] args) {
 		RevisionPractise rp = new RevisionPractise();
 		// printTwoSum(rp);
@@ -288,7 +337,9 @@ public class RevisionPractise {
 		// printLongestConsecutive(rp);
 		// printMaxSubArray(rp);
 		// printSubarraySum(rp);
-		printContainerWithMostWater(rp);
+		// printContainerWithMostWater(rp);
+		// bestTimeToBuyAndSellStock(rp);
+		printLengthOfLongestSubstring(rp);
 
 	}
 
