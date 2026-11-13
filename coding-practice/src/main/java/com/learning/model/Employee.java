@@ -43,7 +43,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [age=" + age + ", name=" + name + ", salary=" + salary + "]";
+		return "[age = " + age + ", name = " + name + ", salary = " + salary + "]";
 	}
 
 	public static List<Employee> findEmployees() {
