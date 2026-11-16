@@ -326,7 +326,7 @@ public class RevisionPractise {
 		System.out.println("Max length = " + len);
 	}
 
-	public static void main(String[] args) {
+	public static void execute() {
 		RevisionPractise rp = new RevisionPractise();
 		// printTwoSum(rp);
 		// printContainsDuplicate(rp);
@@ -340,7 +340,10 @@ public class RevisionPractise {
 		// printContainerWithMostWater(rp);
 		// bestTimeToBuyAndSellStock(rp);
 		printLengthOfLongestSubstring(rp);
+	}
 
+	public static void main(String[] args) {
+		execute();
 	}
 
 }
