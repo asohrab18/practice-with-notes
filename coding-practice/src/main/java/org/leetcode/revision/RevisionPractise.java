@@ -326,6 +326,49 @@ public class RevisionPractise {
 		System.out.println("Max length = " + len);
 	}
 
+	public List<Integer> findAllAnagramsInAString(String s, String p) {
+
+		List<Integer> indices = new ArrayList<>();
+
+		if (s == null || p == null) {
+			return indices;
+		}
+
+		int l = s.length();
+		int m = p.length();
+
+		if (l == 0 || m == 0) {
+			return indices;
+		}
+		s = s.toLowerCase();
+		p = p.toLowerCase();
+
+		char[] pCharArray = p.toCharArray();
+		Arrays.sort(pCharArray);
+		
+		String pSortedString = new String(pCharArray);
+
+		for (int i = 0; i <= l - m; i++) {
+			String sub = s.substring(i, i + m);
+			
+			char[] subCharArray = sub.toCharArray();
+			Arrays.sort(subCharArray);
+			
+			String subSortedString = new String(subCharArray);
+
+			if (pSortedString.equals(subSortedString)) {
+				indices.add(i);
+			}
+		}
+
+		return indices;
+	}
+
+	public static void printAllAnagramsInAString(RevisionPractise rp) {
+		List<Integer> indices = rp.findAllAnagramsInAString("acdcaeccde", "c");
+		System.out.println("indices = " + indices);
+	}
+
 	public static void execute() {
 		RevisionPractise rp = new RevisionPractise();
 		// printTwoSum(rp);
@@ -339,7 +382,8 @@ public class RevisionPractise {
 		// printSubarraySum(rp);
 		// printContainerWithMostWater(rp);
 		// bestTimeToBuyAndSellStock(rp);
-		printLengthOfLongestSubstring(rp);
+		// printLengthOfLongestSubstring(rp);
+		printAllAnagramsInAString(rp);
 	}
 
 	public static void main(String[] args) {
