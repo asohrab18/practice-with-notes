@@ -345,15 +345,15 @@ public class RevisionPractise {
 
 		char[] pCharArray = p.toCharArray();
 		Arrays.sort(pCharArray);
-		
+
 		String pSortedString = new String(pCharArray);
 
 		for (int i = 0; i <= l - m; i++) {
 			String sub = s.substring(i, i + m);
-			
+
 			char[] subCharArray = sub.toCharArray();
 			Arrays.sort(subCharArray);
-			
+
 			String subSortedString = new String(subCharArray);
 
 			if (pSortedString.equals(subSortedString)) {
@@ -367,6 +367,69 @@ public class RevisionPractise {
 	public static void printAllAnagramsInAString(RevisionPractise rp) {
 		List<Integer> indices = rp.findAllAnagramsInAString("acdcaeccde", "c");
 		System.out.println("indices = " + indices);
+	}
+
+	public int minSubArrayLenGarbage(int target, int[] nums) {
+
+		int sumOfAllItems = 0;
+		for (int i = 0; i < nums.length; i++) {
+			sumOfAllItems = sumOfAllItems + nums[i];
+		}
+		if (sumOfAllItems < target) {
+			return 0;
+		}
+
+		int minimumLength = Integer.MAX_VALUE;
+
+		for (int i = 0; i < nums.length; i++) {
+			int sum = 0;
+
+			for (int j = i; j < nums.length; j++) {
+				int item = nums[j];
+				sum = sum + item;
+
+				if (sum >= target) {
+					int minLen = j - i + 1;
+					minimumLength = Math.min(minimumLength, minLen);
+					break;
+				}
+			}
+		}
+
+		return minimumLength;
+	}
+
+public int minSubArrayLen(int target, int[] nums) {
+
+    int left = 0;
+    int sum = 0;
+
+    int minimumLength = Integer.MAX_VALUE;
+
+    for (int right = 0; right < nums.length; right++) {
+
+        sum = sum + nums[right];
+
+        while (sum >= target) {
+
+            int currentLength = right - left + 1;
+
+            minimumLength = Math.min(minimumLength, currentLength);
+
+            sum = sum - nums[left];
+
+            left++;
+        }
+    }
+
+    return minimumLength == Integer.MAX_VALUE ? 0 : minimumLength;
+}
+
+	public static void printMinSubArrayLen(RevisionPractise rp) {
+		int[] nums = { 2, 3, 1, 2, 4, 3 };
+		int target = 7;
+		int minLen = rp.minSubArrayLen(target, nums);
+		System.out.println("minLen = " + minLen);
 	}
 
 	public static void execute() {
@@ -383,7 +446,8 @@ public class RevisionPractise {
 		// printContainerWithMostWater(rp);
 		// bestTimeToBuyAndSellStock(rp);
 		// printLengthOfLongestSubstring(rp);
-		printAllAnagramsInAString(rp);
+		// printAllAnagramsInAString(rp);
+		printMinSubArrayLen(rp);
 	}
 
 	public static void main(String[] args) {
